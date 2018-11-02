@@ -2,4 +2,4 @@
 2)add deps on spring-mvc, hibernate, mysql-driver, jstl, gson
 3)configur hibernate
 4)configure spring-mvc, create packages
-5)
+5)...
