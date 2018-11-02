@@ -1,5 +1,5 @@
 1)+++configure web project
 2)+++add deps on spring-mvc, hibernate, mysql-driver, jstl, gson
-3)configur hibernate
+3)+++configure hibernate
 4)configure spring-mvc, create packages
 5)....
