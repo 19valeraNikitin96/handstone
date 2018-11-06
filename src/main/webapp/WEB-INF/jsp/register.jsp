@@ -10,7 +10,7 @@
 
     <tr>
         <td align='right'>
-            <form action='/hs/register' method='POST' >
+            <form action='/register' method='POST'>
 
                 <p >
                     
@@ -38,7 +38,7 @@
                     <input type='submit' value='Sign Up'>
                 </p>
             </form>
-            <form action='/hs/' method='GET' >
+            <form action='/' method='GET'>
                 <p align='center'>
                     <input type='submit' value='Sign In'>
                 </p>

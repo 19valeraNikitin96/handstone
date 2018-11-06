@@ -11,3 +11,4 @@
 11)+++create register.jsp
 12)+++create RegisterController (get, post)
 13)+++create AuthController (POST)
+14)add empty json to new user

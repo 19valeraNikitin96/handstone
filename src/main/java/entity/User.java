@@ -1,14 +1,16 @@
 package entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Date;
+import java.io.Serializable;
+import java.time.Instant;
 import java.util.Objects;
 
 @Entity
 @Table(name = "hs_user")
-public class User {
+public class User implements Serializable {
     @Id
     private  String id;
     private String login;
@@ -17,8 +19,9 @@ public class User {
     private int points;
     private String deck;
     private int vip;
+    @Column(name = "class")
     private String cla$$;
-    private Date date;
+    private Instant date;
     private int money;
 
     /*************************
@@ -27,7 +30,7 @@ public class User {
      *************************/
     public User(){}
 
-    public User(String id, String login, String pass, int lvl, int points, String deck, int vip, String cla$$, Date date, int money) {
+    public User(String id, String login, String pass, int lvl, int points, String deck, int vip, String cla$$, Instant date, int money) {
         this.id = id;
         this.login = login;
         this.pass = pass;
@@ -77,7 +80,7 @@ public class User {
         return cla$$;
     }
 
-    public Date getDate() {
+    public Instant getDate() {
         return date;
     }
 
@@ -121,7 +124,7 @@ public class User {
             this.cla$$ = cla$$;
         }
 
-        public void setDate (Date date){
+    public void setDate(Instant date) {
             this.date = date;
         }
 

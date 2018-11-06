@@ -1,18 +1,21 @@
 package service;
 
-import dao.HUserDao;
 import dao.UDaoInt;
 import entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import spring.SpringContextHolder;
 
-import java.util.Date;
+import java.time.Instant;
+import java.util.UUID;
 
 @Service
 public class AuthService {
+    private final UDaoInt udao;
+
     @Autowired
-    private UDaoInt udao = new HUserDao();
+    public AuthService(UDaoInt udao) {
+        this.udao = udao;
+    }
 
     public boolean checkCredentials(String login, String pass1, String pass2, String cla$$) {
         if (login.length() == 0 || pass1.length() == 0 || cla$$.length() == 0) {
@@ -24,8 +27,8 @@ public class AuthService {
         return udao.getByLogin(login) == null;
     }
 
-    public void addNewUser(String login, String pass, int lvl, int points, String deck, int vip, String cla$$, Date date, int money) {
-        User u = (User) SpringContextHolder.getContext().getBean("user");
+    public void addNewUser(String login, String pass, int lvl, int points, String deck, int vip, String cla$$, Instant date, int money) {
+        User u = new User();
         u.setId(randomId());
         u.setLogin(login);
         u.setPass(pass);
@@ -60,13 +63,7 @@ public class AuthService {
      *      for new User        *
      ****************************/
     private String randomId(){
-        String buf = "";
-        for(int i = 0; i < buf.length(); i=i+3){
-            buf += Math.random()*('Z'-'A')+'A';
-            buf += Math.random()*('z'-'a')+'a';
-            buf += Math.random()*('9'-'0')+'0';
-        }
-        return buf;
+        return UUID.randomUUID().toString();
     }
 
 

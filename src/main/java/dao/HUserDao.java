@@ -12,7 +12,7 @@ public class HUserDao implements UDaoInt {
     public User getByLogin(String login) {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session s = sf.openSession();
-        User out = (User) s.createQuery("FROM hs_user WHERE login='" + login + "'").uniqueResult();
+        User out = (User) s.createQuery("FROM User WHERE login='" + login + "'").uniqueResult();
         s.close();
         return out;
     }

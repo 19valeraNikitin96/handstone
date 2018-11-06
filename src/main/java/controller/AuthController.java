@@ -1,10 +1,12 @@
 package controller;
 
 import entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import service.AuthService;
 
@@ -15,28 +17,32 @@ import java.io.IOException;
 @Controller
 @RequestMapping("/")
 public class AuthController {
+    private final AuthService auth;
 
-    private final static AuthService auth = new AuthService();
+    @Autowired
+    public AuthController(AuthService auth) {
+        this.auth = auth;
+    }
 
     @GetMapping
     public ModelAndView doAuth(){
-        ModelAndView out = new ModelAndView("welcome");
-
-        return out;
+        return new ModelAndView("welcome");
     }
 
     @PostMapping
-    public void doAuth(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        String login = req.getParameter("login");
-        String pass = req.getParameter("pass");
-
+    public void doAuth(
+            HttpServletRequest req,
+            HttpServletResponse resp,
+            @RequestParam String login,
+            @RequestParam String pass
+    ) throws IOException {
         User u = auth.isUserRegistered(login, pass);
         if (u != null) {
             req.getSession().setAttribute("user", u);
-            resp.sendRedirect("/hs/");
             System.out.println("Authorization successful");
+            resp.sendRedirect("/");
         } else {
-            resp.sendRedirect("/hs/test");
+            resp.sendRedirect("/test");
         }
     }
 }
