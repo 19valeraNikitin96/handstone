@@ -2,11 +2,11 @@
 2)+++add deps on spring-mvc, hibernate, mysql-driver, jstl, gson
 3)+++configure hibernate
 4)+++configure spring-mvc, create packages
-5)create welcome.jsp
-6)create WelcomeController ("/")
-7)create table hs_user with id, login, pass, class, lvl, points and cards columns
-8)create User entity for hs_user table
-9)create UserDao with getByLogin, add methods
+5)+++create welcome.jsp
+6)+++create WelcomeController ("/") ?
+7)+++create table hs_user with id, login, pass, class, lvl, points and cards columns
+8)+++create User entity for hs_user table
+9)+++create UserDao with getByLogin, add methods
 10)create AuthService with getByLogin, add methods
 11)create register.jsp
 12)create RegisterController (get, post)
