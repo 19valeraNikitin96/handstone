@@ -1,5 +1,6 @@
 package controller;
 
+import entity.Cards;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import service.AuthService;
+import service.JsonTransformer;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -17,11 +19,13 @@ import java.time.Instant;
 @RequestMapping("/register")
 public class RegisterController {
 
-    private final AuthService auth;
+    private AuthService auth;
+    private JsonTransformer json;
 
     @Autowired
-    public RegisterController(AuthService auth) {
+    public RegisterController(AuthService auth, JsonTransformer json) {
         this.auth = auth;
+        this.json = json;
     }
 
     @GetMapping
@@ -39,7 +43,7 @@ public class RegisterController {
         if (!auth.checkCredentials(login, pass1, pass2, cla$$)) {
             response.sendRedirect("/test");
         } else {
-            auth.addNewUser(login, pass1, 0, 0, "", 0, cla$$, Instant.now(), 100);
+            auth.addNewUser(login, pass1, 0, 0, json.toJson(new Cards()), 0, cla$$, Instant.now(), 100);
             System.out.println("Registration successful");
             response.sendRedirect("/");
         }
