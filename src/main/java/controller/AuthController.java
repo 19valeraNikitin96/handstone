@@ -40,7 +40,7 @@ public class AuthController {
         if (u != null) {
             req.getSession().setAttribute("user", u);
             System.out.println("Authorization successful");
-            resp.sendRedirect("/");
+            resp.sendRedirect("/hs");
         } else {
             resp.sendRedirect("/test");
         }
