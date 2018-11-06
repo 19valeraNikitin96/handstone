@@ -3,7 +3,7 @@
 3)+++configure hibernate
 4)+++configure spring-mvc, create packages
 5)+++create welcome.jsp
-6)+++create WelcomeController ("/") ?
+6)+++create WelcomeController ("/")
 7)+++create table hs_user with id, login, pass, class, lvl, points and cards columns
 8)+++create User entity for hs_user table
 9)+++create UserDao with getByLogin, add methods
@@ -14,3 +14,9 @@
 14)+++add empty json to new user
 15)+++create hs.jsp
 16)+++create HSController
+17)show in hs.jsp all user data(lvl, points, class, date of registration, money)
+18)bug: fix problem with date of registration
+19)in HSController add quantity of cards into model
+20)in deck div in hs.jsp add logic to show button 'form your deck'(/deck) if deck qty is not 10
+21)in battle div in hs.jsp show button 'form your deck'(/deck) if deck qty is not 10 and 'TO BATTLE' if 10
+22)create deck.jsp
