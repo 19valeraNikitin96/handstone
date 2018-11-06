@@ -12,18 +12,19 @@
 
     <tr>
         <td align='right'>
-            <form action='<c:url value="/"/>' method='GET'>
+            <form action='/hs' method='POST'>
                 <p >
                     Login:<input type='text' name='login' placeholder='Input your login'>
                 </p>
                 <p >
                     password:<input type='password' name='pass' placeholder='Input your password'>
                 </p>
-            </form>
-            <form action='/' method='GET'>
                 <p align='left'>
                     <input type='submit' value='SIGN IN'>
                 </p>
+            </form>
+            <form action='/hs/register' method='GET'>
+
                 <p align='right'>
                     <input type='submit' value='SIGN UP'>
                 </p>
