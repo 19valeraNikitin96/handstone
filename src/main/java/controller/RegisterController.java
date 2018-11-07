@@ -44,6 +44,7 @@ public class RegisterController {
             response.sendRedirect("/test");
         } else {
             auth.addNewUser(login, pass1, 0, 0, json.toJson(new Cards()), 0, cla$$, Instant.now(), 100);
+            System.out.println(Instant.now().toString());
             System.out.println("Registration successful");
             response.sendRedirect("/");
         }

@@ -14,12 +14,12 @@
 14)+++add empty json to new user
 15)+++create hs.jsp
 16)+++create HSController
-17)show in hs.jsp all user data(lvl, points, class, date of registration, money)
-18)bug: fix problem with date of registration
-19)in HSController add quantity of cards into model
-20)in deck div in hs.jsp add logic to show button 'form your deck'(/deck) if deck qty is not 10
-21)in battle div in hs.jsp show button 'form your deck'(/deck) if deck qty is not 10 and 'TO BATTLE' if 10
+17)+++show in hs.jsp all user data(lvl, points, class, date of registration, money)
+18)+++bug: fix problem with date of registration
+19)+++in HSController add quantity of cards into model
+20)+++in deck div in hs.jsp add logic to show button 'form your deck'(/deck) if deck qty is not 10
+21)+++in battle div in hs.jsp show button 'form your deck'(/deck) if deck qty is not 10 and 'TO BATTLE' if 10
 22)create hs_card table with id(int), name, about, cost, pic, isSpell, attack, defence, type, action
-23)create entity for hs_card(Card)
-24)create dao for hs_card(HCardDao + CDaoInt) (get(), getById(int id))
+23)+++create entity for hs_card(Card)
+24)+++create dao for hs_card(HCardDao + CDaoInt) (get(), getById(int id))
 25)create deck.jsp
