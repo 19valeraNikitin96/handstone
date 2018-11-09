@@ -1,6 +1,6 @@
 package service;
 
-import dao.HCardDao;
+import dao.CDaoInt;
 import entity.Card;
 import entity.Cards;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +12,11 @@ import java.util.List;
 @Service
 public class CardService {
 
-    private final HCardDao cardDao;
+    private final CDaoInt cardDao;
     private final JsonTransformer jsonTransformer;
 
     @Autowired
-    public CardService(HCardDao cardDao, JsonTransformer json) {
+    public CardService(CDaoInt cardDao, JsonTransformer json) {
         this.cardDao = cardDao;
         jsonTransformer = json;
     }
