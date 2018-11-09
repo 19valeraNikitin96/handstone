@@ -24,5 +24,5 @@
 24)+++create dao for hs_card(HCardDao + CDaoInt) (get(), getById(int id))
 25)+++create 11 cards in db
 26)+++add cards into the model in HSController
-27)show cards in hs.jsp
+27)+++show cards in hs.jsp
 28)create deck.jsp
