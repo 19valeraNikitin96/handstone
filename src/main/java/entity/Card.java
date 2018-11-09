@@ -15,7 +15,7 @@ public class Card implements Serializable {
     private String about;
     private int cost;
     private String pic;
-    private int isSpell;
+    private boolean isSpell;
     private int attack;
     private int defence;
     private String type;
@@ -23,7 +23,7 @@ public class Card implements Serializable {
 
     public Card() {}
 
-    public Card(int id, String name, String about, int cost, String pic, int isSpell, int attack, int defence, String type, String action) {
+    public Card(int id, String name, String about, int cost, String pic, boolean isSpell, int attack, int defence, String type, String action) {
         this.id = id;
         this.name = name;
         this.about = about;
@@ -76,11 +76,11 @@ public class Card implements Serializable {
         this.pic = pic;
     }
 
-    public int getIsSpell() {
+    public boolean getIsSpell() {
         return isSpell;
     }
 
-    public void setIsSpell(int isSpell) {
+    public void setIsSpell(boolean isSpell) {
         this.isSpell = isSpell;
     }
 
