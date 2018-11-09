@@ -5,6 +5,7 @@ import entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.UUID;
 
@@ -37,7 +38,7 @@ public class AuthService {
         u.setDeck(deck);
         u.setVip(vip);
         u.setCla$$(cla$$);
-        //u.setDate(date);
+        u.setDate(Timestamp.from(date));
         u.setMoney(money);
         udao.add(u);
     }

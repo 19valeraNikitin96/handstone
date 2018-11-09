@@ -1,10 +1,13 @@
 package entity;
 
+import com.google.gson.Gson;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.Objects;
 
@@ -21,7 +24,7 @@ public class User implements Serializable {
     private int vip;
     @Column(name = "class")
     private String cla$$;
-    private Instant date;
+    private Timestamp date;
     private int money;
 
     /*************************
@@ -39,7 +42,7 @@ public class User implements Serializable {
         this.deck = deck;
         this.vip = vip;
         this.cla$$ = cla$$;
-        this.date = date;
+        this.date = Timestamp.from(date);
         this.money = money;
     }
 
@@ -80,7 +83,7 @@ public class User implements Serializable {
         return cla$$;
     }
 
-    public Instant getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
@@ -124,7 +127,7 @@ public class User implements Serializable {
             this.cla$$ = cla$$;
         }
 
-    public void setDate(Instant date) {
+    public void setDate(Timestamp date) {
             this.date = date;
         }
 
@@ -175,5 +178,15 @@ public class User implements Serializable {
         sb.append(", money=").append(money);
         sb.append('}');
         return sb.toString();
+    }
+
+    /**********************************
+     *     getting user card from JSon*
+     *                                *
+     **********************************/
+
+    public int quantityOfCards(){
+        Cards ca = new Gson().fromJson(deck, Cards.class);
+        return ca.cards.size();
     }
 }
