@@ -28,4 +28,8 @@ public class CardService {
         }
         return out;
     }
+
+    public List<Card> getCards() {
+        return cardDao.get();
+    }
 }

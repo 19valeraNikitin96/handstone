@@ -26,4 +26,4 @@
 26)+++add cards into the model in HSController
 27)+++show cards in hs.jsp
 28)+++create deck.jsp
-29)create DeckController
+29)+++create DeckController
