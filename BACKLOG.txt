@@ -27,3 +27,4 @@
 27)+++show cards in hs.jsp
 28)+++create deck.jsp
 29)+++create DeckController
+30)+++add logic to add and remove card in deck controller

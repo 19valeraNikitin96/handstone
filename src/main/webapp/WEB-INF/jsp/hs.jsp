@@ -14,17 +14,10 @@
 </div>
 <div id="deck" style="width: 100%; height: auto; background-color: bisque">
     <h1>Cards quantity: ${u.quantityOfCards()}</h1>
-    <c:choose>
-        <c:when test="${u.quantityOfCards() != 10}">
-            <a href='/deck'><input type='submit' value='Form your deck!'/></a>
-        </c:when>
-        <c:otherwise>
-            <c:forEach items="${cards}" var="card">
-                <h1>Name: ${card.name}; Cost: ${card.cost}</h1>
-            </c:forEach>
-        </c:otherwise>
-    </c:choose>
-
+    <a href='/deck'><input type='submit' value='Form your deck!'/></a>
+    <c:forEach items="${cards}" var="card">
+        <h1>Name: ${card.name}; Cost: ${card.cost}</h1>
+    </c:forEach>
 </div>
 <div id="battle" style="width: 100%; height: 100px; background-color: blueviolet; position: static ">
 

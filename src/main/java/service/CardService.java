@@ -1,6 +1,5 @@
 package service;
 
-import com.google.gson.Gson;
 import dao.HCardDao;
 import entity.Card;
 import entity.Cards;
@@ -14,15 +13,17 @@ import java.util.List;
 public class CardService {
 
     private final HCardDao cardDao;
+    private final JsonTransformer jsonTransformer;
 
     @Autowired
-    public CardService(HCardDao cardDao) {
+    public CardService(HCardDao cardDao, JsonTransformer json) {
         this.cardDao = cardDao;
+        jsonTransformer = json;
     }
 
     public List<Card> getCardsFromJson(String json) {
         List<Card> out = new LinkedList<>();
-        Cards cards = new Gson().fromJson(json, Cards.class);
+        Cards cards = jsonTransformer.getUserCardsIds(json);
         for (Integer id : cards.cards) {
             out.add(cardDao.getById(id));
         }
