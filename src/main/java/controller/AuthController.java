@@ -1,5 +1,6 @@
 package controller;
 
+import cache.CardCacheService;
 import entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,6 +39,7 @@ public class AuthController {
     ) throws IOException {
         User u = auth.isUserRegistered(login, pass);
         if (u != null) {
+            CardCacheService ccs = new CardCacheService();  //start timer
             req.getSession().setAttribute("user", u);
             System.out.println("Authorization successful");
             resp.sendRedirect("/hs");
