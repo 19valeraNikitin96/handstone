@@ -29,11 +29,11 @@
 29)+++create DeckController
 30)+++add logic to add and remove card in deck controller
 31)add cashing mechanism to cashing locally all cards:
- 31.1)Create component in cache package with name CardCache with
+ 31.1)+++Create component in cache package with name CardCache with
       list of all cards inside
- 31.2)Start timer (as static servce) witch puts in CardCache
+ 31.2)+++Start timer (as static servce) witch puts in CardCache
       actual list of cards (with manual creating of HCardDao)
- 31.3)create CacheCardDao implements CDaoInt, mark it as
+ 31.3)+++create CacheCardDao implements CDaoInt, mark it as
       spring component and unmark HCardDao as spring component
 32)create battle controller
 33)create wait.jsp (waiting for opp string)
