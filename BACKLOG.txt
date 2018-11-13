@@ -35,7 +35,7 @@
       actual list of cards (with manual creating of HCardDao)
  31.3)+++create CacheCardDao implements CDaoInt, mark it as
       spring component and unmark HCardDao as spring component
-32)create battle controller
-33)create wait.jsp (waiting for opp string)
-34)create /wait mapping in battle controller
+32)+++create battle controller
+33)+++create wait.jsp (waiting for opp string)
+34)+++create /wait mapping in battle controller
 35)create exit logic
