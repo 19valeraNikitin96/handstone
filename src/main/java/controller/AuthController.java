@@ -26,7 +26,8 @@ public class AuthController {
     }
 
     @GetMapping
-    public ModelAndView doAuth(){
+    public ModelAndView doAuth(HttpServletRequest req){
+        req.getSession().invalidate();
         return new ModelAndView("welcome");
     }
 
@@ -38,6 +39,7 @@ public class AuthController {
             @RequestParam String pass
     ) throws IOException {
         User u = auth.isUserRegistered(login, pass);
+
         if (u != null) {
             CardCacheService ccs = new CardCacheService();  //start timer
             req.getSession().setAttribute("user", u);
