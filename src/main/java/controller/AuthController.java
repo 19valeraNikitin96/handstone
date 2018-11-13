@@ -27,6 +27,7 @@ public class AuthController {
 
     @GetMapping
     public ModelAndView doAuth(){
+        CardCacheService ccs = new CardCacheService();  //start timer
         return new ModelAndView("welcome");
     }
 
@@ -39,7 +40,6 @@ public class AuthController {
     ) throws IOException {
         User u = auth.isUserRegistered(login, pass);
         if (u != null) {
-            CardCacheService ccs = new CardCacheService();  //start timer
             req.getSession().setAttribute("user", u);
             System.out.println("Authorization successful");
             resp.sendRedirect("/hs");

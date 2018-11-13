@@ -3,11 +3,10 @@ package cache;
 import dao.HCardDao;
 
 public class CardCacheService {
-    private static final Thread timer;
     private static final HCardDao hdao = new HCardDao();
 
     static {
-        timer = new Thread(() -> {
+        new Thread(() -> {
             while (true) {
                 CardCache.cardsInside = hdao.get();
                 System.out.println("***********Cards updated***********");
@@ -17,8 +16,7 @@ public class CardCacheService {
                     e.printStackTrace();
                 }
             }
-        });
-        timer.start();
+        }).start();
     }
 
 }

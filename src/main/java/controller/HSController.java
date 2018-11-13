@@ -1,5 +1,6 @@
 package controller;
 
+import entity.Card;
 import entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import service.CardService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 @RequestMapping("/hs")
@@ -29,7 +31,8 @@ public class HSController {
         if (u != null) {
             ModelAndView out = new ModelAndView("hs");
             out.addObject("u", u);
-            out.addObject("cards", card.getCardsFromJson(u.getDeck()));
+            List<Card> cards = card.getCardsFromJson(u.getDeck());
+            out.addObject("cards", cards);
             out.addObject("deckQuantity", u.quantityOfCards());
             return out;
         } else {

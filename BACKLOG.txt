@@ -28,7 +28,7 @@
 28)+++create deck.jsp
 29)+++create DeckController
 30)+++add logic to add and remove card in deck controller
-31)add cashing mechanism to cashing locally all cards:
+31)+++add cashing mechanism to cashing locally all cards:
  31.1)+++Create component in cache package with name CardCache with
       list of all cards inside
  31.2)+++Start timer (as static servce) witch puts in CardCache
