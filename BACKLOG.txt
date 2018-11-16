@@ -39,7 +39,7 @@
 33)+++create wait.jsp (waiting for opp string)
 34)+++create /wait mapping in battle controller
 35)create exit logic
-36)Creatte Battle object (transcription in audio)
-37)Create BattleCache into cache package - multithread list of all bttles
-38)Create new battle (in BattleController) when wait list size > 1
-39)Create battle.jsp
+36)+++Create Battle object (transcription in audio)
+37)+++Create BattleCache into cache package - multithread list of all battles
+38)+++Create new battle (in BattleController) when wait list size > 1
+39)+++Create battle.jsp

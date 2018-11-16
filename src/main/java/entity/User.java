@@ -1,6 +1,8 @@
 package entity;
 
 import com.google.gson.Gson;
+import org.springframework.beans.factory.annotation.Autowired;
+import service.CardService;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +11,7 @@ import javax.persistence.Table;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.util.List;
 import java.util.Objects;
 
 @Entity

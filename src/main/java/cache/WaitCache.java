@@ -2,10 +2,7 @@ package cache;
 
 import entity.User;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class WaitCache {
@@ -37,5 +34,22 @@ public class WaitCache {
             break;
         }
         return out;
+    }
+
+    //метод получения случайного User из коллекции waitUsers
+    public static User randUser(User exist){
+
+        int randNum;
+        while(true){
+            randNum = (int) (Math.random()*waitUsers.size());
+            for(Map.Entry<String, User > pair : waitUsers.entrySet()){
+                if(randNum == 0){
+                    if(!exist.equals(pair.getValue())){
+                        return pair.getValue();
+                    }
+                }
+                randNum--;
+            }
+        }
     }
 }
