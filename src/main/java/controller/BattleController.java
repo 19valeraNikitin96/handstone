@@ -75,4 +75,23 @@ public class BattleController {
             return new ModelAndView("wait");
         }
     }
+
+    @GetMapping
+    public ModelAndView battleWiew(HttpServletRequest req,
+                                   HttpServletResponse resp) throws IOException {
+        //check if user logined
+        User u = (User) req.getSession().getAttribute("user");
+        if (u == null) {
+            resp.sendRedirect("/");
+            return null;
+        }
+        Integer battleId = (Integer) req.getSession().getAttribute("battleId");
+        if (battleId == null) {
+            resp.sendRedirect("/");
+            return null;
+        }
+        ModelAndView out = new ModelAndView("battle");
+        out.addObject("b", BattleCache.battles.get(battleId));
+        return out;
+    }
 }
