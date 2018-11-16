@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Battle {
-    private final int id;
+    private final Integer id;
 
     private List<Card> deck1 = new CopyOnWriteArrayList<>();
     private List<Card> deck2 = new CopyOnWriteArrayList<>();
@@ -33,19 +33,15 @@ public class Battle {
         this.id = id;
     }
 
-    public Battle(int id, List<Card> deck1, List<Card> deck2, List<Card> inHand1, List<Card> inHand2, List<Card> onTable1, List<Card> onTable2, String login1, String login2) {
+    public Battle(Integer id, List<Card> deck1, List<Card> deck2, String login1, String login2) {
         this.id = id;
         this.deck1 = deck1;
         this.deck2 = deck2;
-        this.inHand1 = inHand1;
-        this.inHand2 = inHand2;
-        this.onTable1 = onTable1;
-        this.onTable2 = onTable2;
         this.login1 = login1;
         this.login2 = login2;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -166,7 +162,7 @@ public class Battle {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Battle battle = (Battle) o;
-        return id == battle.id &&
+        return Objects.equals(id, battle.id) &&
                 isMove1 == battle.isMove1 &&
                 hp1 == battle.hp1 &&
                 hp2 == battle.hp2 &&

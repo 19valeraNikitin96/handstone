@@ -32,10 +32,7 @@ public class WaitCache {
         out.add(u);
         waitUsers.remove(u.getLogin());
         Set<String> userLogins = waitUsers.keySet();
-        for (String s : userLogins) {
-            out.add(waitUsers.remove(s));
-            break;
-        }
+        userLogins.stream().findFirst().ifPresent(s -> out.add(waitUsers.remove(s)));
         return out;
     }
 }
