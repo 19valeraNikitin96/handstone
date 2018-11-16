@@ -55,6 +55,7 @@ public class BattleController {
                     Battle b = new Battle(u, WaitCache.randUser(u));
                     ModelAndView out = new ModelAndView("battle");
                     out.addObject("battle", b);
+                    out.addObject("currentUser", u);
                     WaitCache.remove(b.player1.getLogin());
                     WaitCache.remove(b.player2.getLogin());
                     BattleCache.battles.add(b);
