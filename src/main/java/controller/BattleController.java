@@ -90,8 +90,11 @@ public class BattleController {
             resp.sendRedirect("/");
             return null;
         }
+        Battle b = BattleCache.battles.get(battleId);
+        //TODO: for 42
+
         ModelAndView out = new ModelAndView("battle");
-        out.addObject("b", BattleCache.battles.get(battleId));
+        out.addObject("b", b);
         return out;
     }
 }
