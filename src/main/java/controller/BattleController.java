@@ -40,6 +40,7 @@ public class BattleController {
             if(BattleCache.contains(u)){
                 ModelAndView out = new ModelAndView("battle");
                 out.addObject("battle", BattleCache.findBattleOfUser(u));
+                out.addObject("currentUser",u);
                 return out;
             }
             if (exit != null) {
