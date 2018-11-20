@@ -9,7 +9,7 @@
     <tr>
 
         <td>
-            <table border="1">
+            <table border='1' width='100%'>
                 <tr>
                     <td>
                         <c:if test="${b.login1.equals(player.login)}">
@@ -38,8 +38,6 @@
                     <td>
 
                     </td>
-
-
                 </tr>
             </table>
         </td>
@@ -49,7 +47,7 @@
     <tr>
 
         <td>
-            <table border="1">
+            <table border='1' width='100%'>
                 <tr>
                     <td>
                         <c:forEach items="${b.inHand2}" var="card">
