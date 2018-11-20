@@ -93,8 +93,13 @@ public class BattleController {
         Battle b = BattleCache.battles.get(battleId);
         //TODO: for 42
 
+        if (u.getLogin().equals(b.getLogin2())) {
+
+            b = new Battle(b);
+        }
         ModelAndView out = new ModelAndView("battle");
         out.addObject("b", b);
+        out.addObject("player", (User) req.getSession().getAttribute("user"));
         return out;
     }
 }
