@@ -248,5 +248,8 @@ public class Battle {
         getInHand2().add(getDeck2().remove(new Random().nextInt(9)));
         //
         getInHand1().add(getDeck1().remove(new Random().nextInt(8)));
+        this.mana1 = 1;
+        this.mana2 = 1;
+        this.settedUp = true;
     }
 }

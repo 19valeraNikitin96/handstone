@@ -51,6 +51,19 @@
         <td>
             <h1>TURN IS ${b.turn}</h1>
         </td>
+        <td>
+            <c:if test="${b.isMove1()}">
+                <form action="/battle" method="POST">
+                    <input type="hidden" name="end" value="true"/>
+                    <input type="submit" value="END TURN"/>
+                </form>
+            </c:if>
+            <c:if test="${!b.isMove1()}">
+                <form action="/battle" method="GET">
+                    <input type="submit" value="REFRESH"/>
+                </form>
+            </c:if>
+        </td>
     </tr>
     <tr>
 
