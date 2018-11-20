@@ -46,3 +46,4 @@
 40)+++Create battle get mapping in battle controller
 41)+++Create battle.jsp
 42)+++add logic to inverse players when we are the second one
+43)+++setting up a correct battle

@@ -1,6 +1,6 @@
 package controller;
 
-import cache.CardCacheService;
+import cache.BattleCache;
 import entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,11 +26,15 @@ public class AuthController {
     }
 
     @GetMapping
-    public ModelAndView doAuth(HttpServletRequest req) {
-        if (req.getSession() != null) {
-            req.getSession().invalidate();
+    public ModelAndView doAuth(HttpServletRequest req,
+                               HttpServletResponse resp) throws IOException {
+        User u = (User) req.getSession().getAttribute("user");
+        if (u != null && BattleCache.isInBattle(u.getLogin()) != null) {
+            resp.sendRedirect("/battle");
         }
-        CardCacheService ccs = new CardCacheService();  //start timer
+        if (u != null && BattleCache.isInBattle(u.getLogin()) == null) {
+            req.getSession().removeAttribute("user");
+        }
         return new ModelAndView("welcome");
     }
 

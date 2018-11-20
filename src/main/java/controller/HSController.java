@@ -30,23 +30,25 @@ public class HSController {
     @GetMapping
     public ModelAndView hs(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         User u = (User) req.getSession().getAttribute("user");
-
+        if (u == null) {
+            resp.sendRedirect("/");
+            return null;
+        }
+        if (req.getSession().getAttribute("battleId") != null) {
+            resp.sendRedirect("/battle");
+            return null;
+        }
         Battle battle = BattleCache.isInBattle(u.getLogin());
         if (battle != null) {
             req.getSession().setAttribute("battleId", battle.getId());
             resp.sendRedirect("/battle");
             return null;
         }
-        if (u != null) {
-            ModelAndView out = new ModelAndView("hs");
-            out.addObject("u", u);
-            List<Card> cards = card.getCardsFromJson(u.getDeck());
-            out.addObject("cards", cards);
-            out.addObject("deckQuantity", u.quantityOfCards());
-            return out;
-        } else {
-            resp.sendRedirect("/");
-            return null;
-        }
+        ModelAndView out = new ModelAndView("hs");
+        out.addObject("u", u);
+        List<Card> cards = card.getCardsFromJson(u.getDeck());
+        out.addObject("cards", cards);
+        out.addObject("deckQuantity", u.quantityOfCards());
+        return out;
     }
 }

@@ -4,6 +4,7 @@ import entity.Card;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Battle {
@@ -24,10 +25,12 @@ public class Battle {
     private int hp1 = 20;
     private int hp2 = 20;
 
-    private int turn = 0;
+    private int turn = 1;
 
     private int mana1;
     private int mana2;
+
+    private boolean settedUp = false;
 
     public Battle(int id) {
         this.id = id;
@@ -157,6 +160,10 @@ public class Battle {
         this.mana2 = mana2;
     }
 
+    public boolean isSettedUp() {
+        return settedUp;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -225,10 +232,21 @@ public class Battle {
         this.hp1 = b.hp2;
         this.hp2 = b.hp1;
 
-        this.isMove1 = b.isMove1;
+        this.isMove1 = !b.isMove1;
 
         this.mana1 = b.mana2;
         this.mana2 = b.mana1;
 
+        this.settedUp = b.isSettedUp();
+
+    }
+
+    public void setUpBattle() {
+        getInHand1().add(getDeck1().remove(new Random().nextInt(10)));
+        getInHand1().add(getDeck1().remove(new Random().nextInt(9)));
+        getInHand2().add(getDeck2().remove(new Random().nextInt(10)));
+        getInHand2().add(getDeck2().remove(new Random().nextInt(9)));
+        //
+        getInHand1().add(getDeck1().remove(new Random().nextInt(8)));
     }
 }

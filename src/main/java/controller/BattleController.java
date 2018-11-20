@@ -77,7 +77,7 @@ public class BattleController {
     }
 
     @GetMapping
-    public ModelAndView battleWiew(HttpServletRequest req,
+    public ModelAndView battleView(HttpServletRequest req,
                                    HttpServletResponse resp) throws IOException {
         //check if user logined
         User u = (User) req.getSession().getAttribute("user");
@@ -87,19 +87,21 @@ public class BattleController {
         }
         Integer battleId = (Integer) req.getSession().getAttribute("battleId");
         if (battleId == null) {
-            resp.sendRedirect("/");
+            resp.sendRedirect("/hs");
             return null;
         }
         Battle b = BattleCache.battles.get(battleId);
-        //TODO: for 42
+        //check if decks is full
+        if (!b.isSettedUp()) {
+            b.setUpBattle();
+        }
 
         if (u.getLogin().equals(b.getLogin2())) {
-
             b = new Battle(b);
         }
         ModelAndView out = new ModelAndView("battle");
         out.addObject("b", b);
-        out.addObject("player", (User) req.getSession().getAttribute("user"));
+        out.addObject("u", u);
         return out;
     }
 }
