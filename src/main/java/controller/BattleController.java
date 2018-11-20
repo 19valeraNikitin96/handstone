@@ -7,6 +7,7 @@ import entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -103,5 +104,14 @@ public class BattleController {
         out.addObject("b", b);
         out.addObject("u", u);
         return out;
+    }
+
+    @PostMapping
+    public void processMove(HttpServletRequest req,
+                            HttpServletResponse resp) throws IOException {
+        Integer battleId = (Integer) req.getSession().getAttribute("battleId");
+        Battle b = BattleCache.battles.get(battleId);
+
+        resp.sendRedirect("/battle");
     }
 }
