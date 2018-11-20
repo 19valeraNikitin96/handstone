@@ -10,8 +10,13 @@
         <td>
             <table border='1' width='100%'>
                 <tr>
-                    <h1>${b.login1}</h1>
-                    <hr/>
+                    <td>
+                        <h1>${b.login1}</h1>
+                    </td>
+                    <td>
+                        <h1>YOUR MANA:</h1>
+                        <h1>${b.mana1}</h1>
+                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -42,15 +47,23 @@
         </td>
 
     </tr>
-    <hr/>
-    <hr/>
+    <tr>
+        <td>
+            <h1>TURN IS ${b.turn}</h1>
+        </td>
+    </tr>
     <tr>
 
         <td>
             <table border='1' width='100%'>
                 <tr>
-                    <h1>${b.login2}</h1>
-                    <hr/>
+                    <td>
+                        <h1>${b.login2}</h1>
+                    </td>
+                    <td>
+                        <h1>HIS MANA:</h1>
+                        <h1>${b.mana2}</h1>
+                    </td>
                 </tr>
                 <tr>
                     <td>

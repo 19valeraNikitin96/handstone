@@ -49,6 +49,7 @@
 43)+++setting up a correct battle
 44)+++create post method in battle controller to process the move
 45)+++create 'end turn' event in those method
-46)process end turn on battle.jsp
-47)create 'play' event in controller
-48)process play card in jsp
+46)+++print mana and turn on jsp
+47)process end turn on battle.jsp
+48)create 'play' event in controller
+49)process play card in jsp
