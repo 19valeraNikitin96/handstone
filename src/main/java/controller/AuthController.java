@@ -26,7 +26,10 @@ public class AuthController {
     }
 
     @GetMapping
-    public ModelAndView doAuth(){
+    public ModelAndView doAuth(HttpServletRequest req) {
+        if (req.getSession() != null) {
+            req.getSession().invalidate();
+        }
         CardCacheService ccs = new CardCacheService();  //start timer
         return new ModelAndView("welcome");
     }

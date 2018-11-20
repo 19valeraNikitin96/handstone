@@ -11,6 +11,7 @@
     <h1>Class: ${u.cla$$}</h1>
     <h1>Date of registration: ${u.date}</h1>
     <h1>Money: ${u.money}</h1>
+    <h1><a href="/">Exit</a></h1>
 </div>
 <div id="deck" style="width: 100%; height: auto; background-color: bisque">
     <h1>Cards quantity: ${u.quantityOfCards()}</h1>
