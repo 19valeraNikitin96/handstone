@@ -12,10 +12,17 @@
             <table border="1">
                 <tr>
                     <td>
-                        <c:forEach items="${b.deck1}" var="card">
-                            <h1>Name: ${card.name}; About: ${card.about};
-                                Attack: ${card.attack};Defence: ${card.defence}</h1>
-                        </c:forEach>
+                        <c:if test="${b.login1.equals(player.login)}">
+                            <c:forEach items="${b.deck1}" var="card">
+                                <h1>Name: ${card.name}; About: ${card.about};
+                                    Attack: ${card.attack};Defence: ${card.defence}</h1>
+                            </c:forEach>
+                        </c:if>
+                        <c:if test="${!b.login1.equals(player.login)}">
+                            <c:forEach items="${b.deck1}" var="card">
+                                <h1>Opponent Card</h1>
+                            </c:forEach>
+                        </c:if>
                     </td>
                 </tr>
                 <tr>
@@ -60,10 +67,17 @@
                 <tr>
 
                     <td>
-                        <c:forEach items="${b.deck2}" var="card">
-                            <h1>Name: ${card.name}; About: ${card.about};
-                                Attack: ${card.attack};Defence: ${card.defence}</h1>
-                        </c:forEach>
+                        <c:if test="${b.login2.equals(player.login)}">
+                            <c:forEach items="${b.deck2}" var="card">
+                                <h1>Name: ${card.name}; About: ${card.about};
+                                    Attack: ${card.attack};Defence: ${card.defence}</h1>
+                            </c:forEach>
+                        </c:if>
+                        <c:if test="${!b.login2.equals(player.login)}">
+                            <c:forEach items="${b.deck2}" var="card">
+                                <h1>Opponent Card</h1>
+                            </c:forEach>
+                        </c:if>
                     </td>
 
                 </tr>

@@ -95,6 +95,7 @@ public class BattleController {
 
         ModelAndView out = new ModelAndView("battle");
         out.addObject("b", b);
+        out.addObject("player", (User) req.getSession().getAttribute("user"));
         return out;
     }
 }
