@@ -108,10 +108,24 @@ public class BattleController {
 
     @PostMapping
     public void processMove(HttpServletRequest req,
-                            HttpServletResponse resp) throws IOException {
+                            HttpServletResponse resp,
+                            @RequestParam(required = false) String end) throws IOException {
         Integer battleId = (Integer) req.getSession().getAttribute("battleId");
         Battle b = BattleCache.battles.get(battleId);
-
+        User u = (User) req.getSession().getAttribute("user");
+        if (end != null) {
+            //change move if we 1; give 1 card to 2;
+            b.setMove1(!b.isMove1());
+            if (b.getLogin1().equals(u.getLogin())) {
+                b.getInHand2().add(b.getDeck2().remove(new Random().nextInt(b.getDeck2().size())));
+            }
+            // change move if we 2; increment move; give 1 card to 1; increment players mana;
+            else {
+                b.setTurn(b.getTurn() + 1);
+                b.setMana1(b.getTurn());
+                b.setMana2(b.getTurn());
+            }
+        }
         resp.sendRedirect("/battle");
     }
 }
