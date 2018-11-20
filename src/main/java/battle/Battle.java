@@ -204,4 +204,31 @@ public class Battle {
                 ", mana2=" + mana2 +
                 '}';
     }
+
+    //конструктор реверсивного копирования
+    public Battle(Battle b) {
+
+        this.id = b.id;
+
+        this.deck1 = b.deck2;
+        this.deck2 = b.deck1;
+
+        this.inHand1 = b.inHand2;
+        this.inHand2 = b.inHand1;
+
+        this.onTable2 = b.onTable1;
+        this.onTable1 = b.onTable2;
+
+        this.login1 = b.login2;
+        this.login2 = b.login1;
+
+        this.hp1 = b.hp2;
+        this.hp2 = b.hp1;
+
+        this.isMove1 = b.isMove1;
+
+        this.mana1 = b.mana2;
+        this.mana2 = b.mana1;
+
+    }
 }

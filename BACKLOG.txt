@@ -45,4 +45,4 @@
 39)redirect to battle if battleId present in deck and hs controllers
 40)+++Create battle get mapping in battle controller
 41)+++Create battle.jsp
-42)add logic to inverse players when we are the second one
+42)+++add logic to inverse players when we are the second one
