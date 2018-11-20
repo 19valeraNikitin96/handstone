@@ -1,5 +1,7 @@
 package controller;
 
+import battle.Battle;
+import cache.BattleCache;
 import entity.Card;
 import entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,13 @@ public class HSController {
     @GetMapping
     public ModelAndView hs(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         User u = (User) req.getSession().getAttribute("user");
+
+        Battle battle = BattleCache.isInBattle(u.getLogin());
+        if (battle != null) {
+            req.getSession().setAttribute("battleId", battle.getId());
+            resp.sendRedirect("/battle");
+            return null;
+        }
         if (u != null) {
             ModelAndView out = new ModelAndView("hs");
             out.addObject("u", u);

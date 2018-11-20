@@ -42,7 +42,7 @@
 36)+++Creatte Battle object (transcription in audio)
 37)+++Create BattleCache into cache package - multithread map of all bttles
 38)+++Create new battle (in BattleController) when wait list size > 1
-39)redirect to battle if battleId present in deck and hs controllers
+39)+++redirect to battle if battleId present in deck and hs controllers
 40)+++Create battle get mapping in battle controller
 41)+++Create battle.jsp
 42)+++add logic to inverse players when we are the second one
