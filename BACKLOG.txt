@@ -58,5 +58,5 @@
 51)+++process choose ivent
 52)+++create 'unchoose' ivent
 53)+++process unchoose event
-54)create 'attack' event
+54)+++create 'attack' event
 55)process attack event

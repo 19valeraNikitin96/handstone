@@ -113,7 +113,8 @@ public class BattleController {
                             @RequestParam(required = false) String end,
                             @RequestParam(required = false) String play,
                             @RequestParam(required = false) String choice,
-                            @RequestParam(required = false) String unchoice) throws IOException {
+                            @RequestParam(required = false) String unchoice,
+                            @RequestParam(required = false) String attack) throws IOException {
         Integer battleId = (Integer) req.getSession().getAttribute("battleId");
         Battle b = BattleCache.battles.get(battleId);
         User u = (User) req.getSession().getAttribute("user");
@@ -172,6 +173,87 @@ public class BattleController {
         //unchoise of card
         if (unchoice != null) {
             b.setCardChoosen(null);
+        }
+
+        //attack enemy func
+        if (attack != null) {
+            Integer attackedId = Integer.valueOf(attack);
+            //for player1
+            if (b.getLogin1().equals(u.getLogin())) {
+                Card wichAttacks = null;
+                for (Card c : b.getOnTable1()) {
+                    if (b.getCardChoosen().equals(c.getId())) {
+                        wichAttacks = c;
+                        break;
+                    }
+                }
+                //attack in hero
+                if (attackedId.equals(0)) {
+                    b.setHp2(b.getHp2() - wichAttacks.getAttack());
+                    if (b.getHp2() <= 0) {
+                        //end battle
+                    }
+                }
+                //attack card
+                else {
+                    Card wichAttacked = null;
+                    for (Card c : b.getOnTable2()) {
+                        if (attackedId.equals(c.getId())) {
+                            wichAttacked = c;
+                            break;
+                        }
+                    }
+                    //calculate damage
+                    wichAttacked.setDefence(wichAttacked.getDefence() - wichAttacks.getAttack());
+                    wichAttacks.setDefence(wichAttacks.getDefence() - wichAttacked.getAttack());
+                    //if some of them died
+                    if (wichAttacks.getDefence() <= 0) {
+                        b.getOnTable1().remove(wichAttacks);
+                    }
+                    if (wichAttacked.getDefence() <= 0) {
+                        b.getOnTable2().remove(wichAttacked);
+                    }
+                    b.setCardChoosen(null);
+                }
+            }
+            //for player2
+            else {
+                Card wichAttacks = null;
+                for (Card c : b.getOnTable2()) {
+                    if (b.getCardChoosen().equals(c.getId())) {
+                        wichAttacks = c;
+                        break;
+                    }
+                }
+                //attack in hero
+                if (attackedId.equals(0)) {
+                    b.setHp1(b.getHp1() - wichAttacks.getAttack());
+                    if (b.getHp1() <= 0) {
+                        //end battle
+                    }
+                }
+                //attack card
+                else {
+                    Card wichAttacked = null;
+                    for (Card c : b.getOnTable1()) {
+                        if (attackedId.equals(c.getId())) {
+                            wichAttacked = c;
+                            break;
+                        }
+                    }
+                    //calculate damage
+                    wichAttacked.setDefence(wichAttacked.getDefence() - wichAttacks.getAttack());
+                    wichAttacks.setDefence(wichAttacks.getDefence() - wichAttacked.getAttack());
+                    //if some of them died
+                    if (wichAttacks.getDefence() <= 0) {
+                        b.getOnTable2().remove(wichAttacks);
+                    }
+                    if (wichAttacked.getDefence() <= 0) {
+                        b.getOnTable1().remove(wichAttacked);
+                    }
+                    b.setCardChoosen(null);
+                }
+            }
         }
 
         resp.sendRedirect("/battle");
