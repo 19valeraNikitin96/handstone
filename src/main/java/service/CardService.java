@@ -26,9 +26,7 @@ public class CardService {
         Cards cards = jsonTransformer.getUserCardsIds(json);
 
         for (Integer id : cards.cards) {
-            Card test = cardDao.getById(id);
-            //System.out.println(test.toString());  Error
-            out.add(test);
+            out.add(cardDao.getById(id));
         }
         return out;
     }

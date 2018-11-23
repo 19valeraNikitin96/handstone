@@ -3,6 +3,7 @@ package controller;
 import battle.Battle;
 import cache.BattleCache;
 import cache.WaitCache;
+import entity.Card;
 import entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -109,23 +110,42 @@ public class BattleController {
     @PostMapping
     public void processMove(HttpServletRequest req,
                             HttpServletResponse resp,
-                            @RequestParam(required = false) String end) throws IOException {
+                            @RequestParam(required = false) String end,
+                            @RequestParam(required = false) String play) throws IOException {
         Integer battleId = (Integer) req.getSession().getAttribute("battleId");
         Battle b = BattleCache.battles.get(battleId);
         User u = (User) req.getSession().getAttribute("user");
+        //end turn functionality
         if (end != null) {
-            //change move if we 1; give 1 card to 2;
-            b.setMove1(!b.isMove1());
+            //give 1 card to 2;(for player1)
             if (b.getLogin1().equals(u.getLogin())) {
                 b.getInHand2().add(b.getDeck2().remove(new Random().nextInt(b.getDeck2().size())));
             }
-            // change move if we 2; increment move; give 1 card to 1; increment players mana;
+            // increment move; give 1 card to 1; update players mana;(for player2)
             else {
                 b.setTurn(b.getTurn() + 1);
                 b.setMana1(b.getTurn());
                 b.setMana2(b.getTurn());
             }
+            //change move
+            b.setMove1(!b.isMove1());
         }
+        //play card func
+        if (play != null) {
+            int id = Integer.parseInt(play);
+            Card c = null;
+            //(for player1)
+            if (b.getLogin1().equals(u.getLogin())) {
+                c = b.getInHand1().stream().filter(card -> card.getId() == id).findFirst().orElse(c);
+                b.getOnTable1().add(c);
+            }
+            //for player2
+            else {
+                c = b.getInHand2().stream().filter(card -> card.getId() == id).findFirst().orElse(c);
+                b.getOnTable2().add(c);
+            }
+        }
+
         resp.sendRedirect("/battle");
     }
 }
