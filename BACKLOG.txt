@@ -51,7 +51,7 @@
 45)+++create 'end turn' event in those method
 46)+++print mana and turn on jsp
 47)+++process end turn on battle.jsp
-47.1)fix cards cache
+47.1)+++fix cards cache
 48)create 'play' event in controller
 49)process play card in jsp
 50)create 'choose' event

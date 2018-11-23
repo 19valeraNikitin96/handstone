@@ -1,6 +1,8 @@
 package controller;
 
 import cache.BattleCache;
+import cache.CardCache;
+import cache.CardCacheService;
 import entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -49,6 +51,7 @@ public class AuthController {
         if (u != null) {
             req.getSession().setAttribute("user", u);
             System.out.println("Authorization successful");
+             new CardCacheService();    //FIX for task 47.1
             resp.sendRedirect("/hs");
         } else {
             resp.sendRedirect("/test");
