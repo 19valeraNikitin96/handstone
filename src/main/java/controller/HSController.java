@@ -47,6 +47,7 @@ public class HSController {
         ModelAndView out = new ModelAndView("hs");
         out.addObject("u", u);
         List<Card> cards = card.getCardsFromJson(u.getDeck());
+
         out.addObject("cards", cards);
         out.addObject("deckQuantity", u.quantityOfCards());
         return out;

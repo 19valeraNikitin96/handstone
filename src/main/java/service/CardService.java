@@ -24,8 +24,11 @@ public class CardService {
     public List<Card> getCardsFromJson(String json) {
         List<Card> out = new LinkedList<>();
         Cards cards = jsonTransformer.getUserCardsIds(json);
+
         for (Integer id : cards.cards) {
-            out.add(cardDao.getById(id));
+            Card test = cardDao.getById(id);
+            //System.out.println(test.toString());  Error
+            out.add(test);
         }
         return out;
     }
