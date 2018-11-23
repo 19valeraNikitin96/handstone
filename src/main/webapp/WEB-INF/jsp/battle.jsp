@@ -6,7 +6,6 @@
 <body>
 <table>
     <tr>
-
         <td>
             <table border='1' width='100%'>
                 <tr>
@@ -28,8 +27,14 @@
                     <td>
                         <h3>YOUR HAND:</h3>
                         <c:forEach items="${b.inHand1}" var="card">
-                            <h1>Name: ${card.name}; About: ${card.about};
-                                Attack: ${card.attack};Defence: ${card.defence}</h1>
+                            <h2>Name: ${card.name};Attack: ${card.attack};
+                                Defence: ${card.defence}; Mana: ${card.cost};</h2>
+                            <c:if test="${b.isMove1() && b.mana1 >= card.cost}">
+                                <form action="/battle" method="POST">
+                                    <input type="submit" value="PLAY"/>
+                                    <input type="hidden" name="play" value="${card.id}"/>
+                                </form>
+                            </c:if>
                         </c:forEach>
                         <hr/>
                     </td>
@@ -38,14 +43,13 @@
                     <td>
                         <h3>YOUR TABLE</h3>
                         <c:forEach items="${b.onTable1}" var="card">
-                            <h1>Name: ${card.name}; About: ${card.about};
-                                Attack: ${card.attack};Defence: ${card.defence}</h1>
+                            <h2>Name: ${card.name}; About: ${card.about};
+                                Attack: ${card.attack};Defence: ${card.defence}</h2>
                         </c:forEach>
                     </td>
                 </tr>
             </table>
         </td>
-
     </tr>
     <tr>
         <td>
@@ -66,7 +70,6 @@
         </td>
     </tr>
     <tr>
-
         <td>
             <table border='1' width='100%'>
                 <tr>
@@ -88,7 +91,7 @@
                     <td>
                         <h3>HIS HAND:</h3>
                         <c:forEach items="${b.inHand2}" var="card">
-                            <h1>CARD</h1>
+                            <h2>CARD</h2>
                         </c:forEach>
                         <hr/>
                     </td>
@@ -97,14 +100,13 @@
                     <td>
                         <h3>HIS TABLE</h3>
                         <c:forEach items="${b.onTable2}" var="card">
-                            <h1>Name: ${card.name}; About: ${card.about};
-                                Attack: ${card.attack};Defence: ${card.defence}</h1>
+                            <h2>Name: ${card.name}; About: ${card.about};
+                                Attack: ${card.attack};Defence: ${card.defence}</h2>
                         </c:forEach>
                     </td>
                 </tr>
             </table>
         </td>
-
     </tr>
 
 

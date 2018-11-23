@@ -53,7 +53,7 @@
 47)+++process end turn on battle.jsp
 47.1)+++fix cards cache
 48)+++create 'play' event in controller
-49)process play card in jsp
+49)+++process play card in jsp
 50)create 'choose' event
 51)process choose ivent
 52)create 'unchoose' ivent

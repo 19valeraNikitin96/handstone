@@ -124,6 +124,7 @@ public class BattleController {
             // increment move; give 1 card to 1; update players mana;(for player2)
             else {
                 b.setTurn(b.getTurn() + 1);
+                b.getInHand1().add(b.getDeck1().remove(new Random().nextInt(b.getDeck1().size())));
                 b.setMana1(b.getTurn());
                 b.setMana2(b.getTurn());
             }
@@ -136,12 +137,26 @@ public class BattleController {
             Card c = null;
             //(for player1)
             if (b.getLogin1().equals(u.getLogin())) {
-                c = b.getInHand1().stream().filter(card -> card.getId() == id).findFirst().orElse(c);
+                for (Card card : b.getInHand1()) {
+                    if (card.getId() == id) {
+                        c = card;
+                        b.getInHand1().remove(card);
+                        b.setMana1(b.getMana1() - card.getCost());
+                        break;
+                    }
+                }
                 b.getOnTable1().add(c);
             }
             //for player2
             else {
-                c = b.getInHand2().stream().filter(card -> card.getId() == id).findFirst().orElse(c);
+                for (Card card : b.getInHand2()) {
+                    if (card.getId() == id) {
+                        c = card;
+                        b.getInHand2().remove(card);
+                        b.setMana2(b.getMana2() - card.getCost());
+                        break;
+                    }
+                }
                 b.getOnTable2().add(c);
             }
         }
