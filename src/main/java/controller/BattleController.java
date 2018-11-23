@@ -111,7 +111,9 @@ public class BattleController {
     public void processMove(HttpServletRequest req,
                             HttpServletResponse resp,
                             @RequestParam(required = false) String end,
-                            @RequestParam(required = false) String play) throws IOException {
+                            @RequestParam(required = false) String play,
+                            @RequestParam(required = false) String choice,
+                            @RequestParam(required = false) String unchoice) throws IOException {
         Integer battleId = (Integer) req.getSession().getAttribute("battleId");
         Battle b = BattleCache.battles.get(battleId);
         User u = (User) req.getSession().getAttribute("user");
@@ -159,6 +161,17 @@ public class BattleController {
                 }
                 b.getOnTable2().add(c);
             }
+        }
+
+        //choise of card
+        if (choice != null) {
+            Integer id = Integer.valueOf(choice);
+            b.setCardChoosen(id);
+        }
+
+        //unchoise of card
+        if (unchoice != null) {
+            b.setCardChoosen(null);
         }
 
         resp.sendRedirect("/battle");

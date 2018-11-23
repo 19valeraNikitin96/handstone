@@ -54,9 +54,9 @@
 47.1)+++fix cards cache
 48)+++create 'play' event in controller
 49)+++process play card in jsp
-50)create 'choose' event
+50)+++create 'choose' event
 51)process choose ivent
-52)create 'unchoose' ivent
+52)+++create 'unchoose' ivent
 53)process unchoose event
 54)create 'attack' event
 55)process attack event

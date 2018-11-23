@@ -30,6 +30,8 @@ public class Battle {
     private int mana1;
     private int mana2;
 
+    private Integer cardChoosen = null;
+
     private boolean settedUp = false;
 
     public Battle(int id) {
@@ -164,6 +166,14 @@ public class Battle {
         return settedUp;
     }
 
+    public Integer getCardChoosen() {
+        return cardChoosen;
+    }
+
+    public void setCardChoosen(Integer cardChoosen) {
+        this.cardChoosen = cardChoosen;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -237,7 +247,11 @@ public class Battle {
         this.mana1 = b.mana2;
         this.mana2 = b.mana1;
 
+        this.turn = b.getTurn();
+
         this.settedUp = b.isSettedUp();
+
+        this.cardChoosen = b.getCardChoosen();
 
     }
 
