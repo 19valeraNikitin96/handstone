@@ -213,7 +213,6 @@ public class BattleController {
                     if (wichAttacked.getDefence() <= 0) {
                         b.getOnTable2().remove(wichAttacked);
                     }
-                    b.setCardChoosen(null);
                 }
             }
             //for player2
@@ -251,9 +250,9 @@ public class BattleController {
                     if (wichAttacked.getDefence() <= 0) {
                         b.getOnTable1().remove(wichAttacked);
                     }
-                    b.setCardChoosen(null);
                 }
             }
+            b.setCardChoosen(null);
         }
 
         resp.sendRedirect("/battle");

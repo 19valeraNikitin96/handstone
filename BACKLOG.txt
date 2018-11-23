@@ -55,8 +55,10 @@
 48)+++create 'play' event in controller
 49)+++process play card in jsp
 50)+++create 'choose' event
-51)+++process choose ivent
-52)+++create 'unchoose' ivent
+51)+++process choose event
+52)+++create 'unchoose' event
 53)+++process unchoose event
 54)+++create 'attack' event
-55)process attack event
+55)+++process attack event
+56)implement unpossibility of attack again on this turn
+57)end battle functionality (HUGE)

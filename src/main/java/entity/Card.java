@@ -36,6 +36,19 @@ public class Card implements Serializable {
         this.action = action;
     }
 
+    public Card(Card c) {
+        this.id = c.getId();
+        this.name = c.getName();
+        this.about = c.getAbout();
+        this.cost = c.getCost();
+        this.pic = c.getPic();
+        this.isSpell = c.getIsSpell();
+        this.attack = c.getAttack();
+        this.defence = c.getDefence();
+        this.type = c.getType();
+        this.action = c.getAction();
+    }
+
     public int getId() {
         return id;
     }

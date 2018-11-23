@@ -15,7 +15,7 @@ public class CacheCardDao implements CDaoInt{
         for (Card c : get()) {
             //System.out.println(c.getId()+" <-> "+id);
             if (c.getId() == id) {
-                return c;
+                return new Card(c);
             }
         }
         return null;
@@ -23,9 +23,6 @@ public class CacheCardDao implements CDaoInt{
 
     @Override
     public List<Card> get() {
-
-        System.out.println("cardsInside.size(): "+CardCache.cardsInside.size());//display "cardsInside.size(): 0"
-
         return new LinkedList<>(CardCache.cardsInside);
     }
 }

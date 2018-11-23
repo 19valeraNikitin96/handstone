@@ -10,7 +10,7 @@
             <table border='1' width='100%'>
                 <tr>
                     <td>
-                        <h1>${b.login1}</h1>
+                        <h1>${b.login1} ${b.hp1}</h1>
                     </td>
                     <td>
                         <h1>YOUR MANA:</h1>
@@ -88,7 +88,13 @@
             <table border='1' width='100%'>
                 <tr>
                     <td>
-                        <h1>${b.login2}</h1>
+                        <h1>${b.login2} ${b.hp2}</h1>
+                        <c:if test="${b.cardChoosen != null}">
+                            <form action="/battle" method="POST">
+                                <input type="hidden" name="attack" value="0"/>
+                                <input type="submit" value="ATTACK"/>
+                            </form>
+                        </c:if>
                     </td>
                     <td>
                         <h1>HIS MANA:</h1>
@@ -116,6 +122,12 @@
                         <c:forEach items="${b.onTable2}" var="card">
                             <h2>Name: ${card.name}; About: ${card.about};
                                 Attack: ${card.attack};Defence: ${card.defence}</h2>
+                            <c:if test="${b.cardChoosen != null}">
+                                <form action="/battle" method="POST">
+                                    <input type="hidden" name="attack" value="${card.id}"/>
+                                    <input type="submit" value="ATTACK"/>
+                                </form>
+                            </c:if>
                         </c:forEach>
                     </td>
                 </tr>
