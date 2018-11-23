@@ -45,6 +45,18 @@
                         <c:forEach items="${b.onTable1}" var="card">
                             <h2>Name: ${card.name}; About: ${card.about};
                                 Attack: ${card.attack};Defence: ${card.defence}</h2>
+                            <c:if test="${b.isMove1() && b.cardChoosen == null}">
+                                <form action="/battle" method="POST">
+                                    <input type="submit" value="CHOOSE"/>
+                                    <input type="hidden" name="choice" value="${card.id}"/>
+                                </form>
+                            </c:if>
+                            <c:if test="${b.isMove1() && b.cardChoosen != null}">
+                                <form action="/battle" method="POST">
+                                    <input type="submit" value="UNCHOOSE"/>
+                                    <input type="hidden" name="unchoice"/>
+                                </form>
+                            </c:if>
                         </c:forEach>
                     </td>
                 </tr>
@@ -57,10 +69,12 @@
         </td>
         <td>
             <c:if test="${b.isMove1()}">
-                <form action="/battle" method="POST">
-                    <input type="hidden" name="end" value="true"/>
-                    <input type="submit" value="END TURN"/>
-                </form>
+                <c:if test="${b.cardChoosen == null}">
+                    <form action="/battle" method="POST">
+                        <input type="hidden" name="end" value="true"/>
+                        <input type="submit" value="END TURN"/>
+                    </form>
+                </c:if>
             </c:if>
             <c:if test="${!b.isMove1()}">
                 <form action="/battle" method="GET">
