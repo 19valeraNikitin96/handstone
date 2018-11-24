@@ -10,25 +10,6 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>com.jcabi</groupId>
-                <artifactId>jcabi-heroku-maven-plugin</artifactId>
-                <version>0.4.1</version>
-                <configuration>
-                    <name>my-test-app</name>
-                    <artifacts>
-                        <artifact>com.example:example-app:jar::${project.version}</artifact>
-                    </artifacts>
-                    <procfile>web: java -Xmx256m -jar ./example-app.jar \${PORT}</procfile>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>deploy</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
